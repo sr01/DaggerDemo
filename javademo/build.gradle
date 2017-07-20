@@ -1,0 +1,12 @@
+apply plugin: "net.ltgt.apt"
+apply plugin: 'java'
+apply plugin: 'idea'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.dagger:dagger:2.11'
+    apt  'com.google.dagger:dagger-compiler:2.11'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
