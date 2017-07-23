@@ -17,27 +17,27 @@ import dagger.Provides;
 @Module(subcomponents = {MainComponent.class})
 public class AppModule {
 
-  private Context context;
+    private Context context;
 
-  public AppModule(Context context) {
-    this.context = context;
-  }
+    public AppModule(Context context) {
+        this.context = context;
+    }
 
-  @Singleton
-  @Provides
-  public UserRepository provideUserRepository() {
-    return new SimpleUserRepository();
-  }
+    @Singleton
+    @Provides
+    public UserRepository provideUserRepository() {
+        return new SimpleUserRepository(context);
+    }
 
-  @Singleton
-  @Provides
-  public Picasso providePicasso() {
-    return new Picasso.Builder(context).build();
-  }
+    @Singleton
+    @Provides
+    public Picasso providePicasso() {
+        return new Picasso.Builder(context).build();
+    }
 
-  @Singleton
-  @Provides
-  public Scheduler provideViewScheduler(){
-    return Schedulers.androidMainScheduler();
-  }
+    @Singleton
+    @Provides
+    public Scheduler provideViewScheduler() {
+        return Schedulers.androidMainScheduler();
+    }
 }

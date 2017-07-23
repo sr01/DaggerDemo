@@ -10,15 +10,18 @@ import hugo.weaving.DebugLog;
 @Module
 public class MainModule {
 
-  private MainNavigator navigator;
+    private MainNavigator navigator;
+    private String userId;
 
-  @DebugLog
-  public MainModule(MainNavigator navigator) {
-    this.navigator = navigator;
-  }
+    @DebugLog
+    public MainModule(MainNavigator navigator, String userId) {
+        this.navigator = navigator;
+        this.userId = userId;
+    }
 
-  @MainScope
-  @Provides public MainContract.Presenter providePresenter(UserRepository repository, Scheduler viewScheduler) {
-    return new MainPresenter(repository, viewScheduler, navigator);
-  }
+    @MainScope
+    @Provides
+    public MainContract.Presenter providePresenter(UserRepository repository, Scheduler viewScheduler) {
+        return new MainPresenter(userId, repository, viewScheduler, navigator);
+    }
 }

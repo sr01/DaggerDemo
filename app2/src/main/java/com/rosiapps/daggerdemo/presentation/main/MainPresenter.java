@@ -11,57 +11,60 @@ import javax.inject.Inject;
 import hugo.weaving.DebugLog;
 
 public class MainPresenter implements MainContract.Presenter {
-  private static final String TAG = "MainPresenter";
-  private MainContract.View view;
-  private UserRepository repository;
-  private UserRepository.Subscription subscription;
-  private Scheduler viewScheduler;
-  private MainNavigator navigator;
-  private User user;
+    private static final String TAG = "MainPresenter";
+    private final String userId;
+    private MainContract.View view;
+    private UserRepository repository;
+    private UserRepository.Subscription subscription;
+    private Scheduler viewScheduler;
+    private MainNavigator navigator;
 
-  @DebugLog
-  @Inject
-  public MainPresenter(UserRepository repository, Scheduler viewScheduler, MainNavigator navigator) {
-    this.repository = repository;
-    this.viewScheduler = viewScheduler;
-    this.navigator = navigator;
-  }
-
-  @DebugLog
-  @Override public void bindView(MainContract.View view) {
-    this.view = view;
-
-    fetchUserInfo();
-  }
-
-  @DebugLog
-  @Override public void unbindView() {
-    if (subscription != null) {
-      subscription.cancel();
+    @DebugLog
+    @Inject
+    public MainPresenter(String userId, UserRepository repository, Scheduler viewScheduler, MainNavigator navigator) {
+        this.userId = userId;
+        this.repository = repository;
+        this.viewScheduler = viewScheduler;
+        this.navigator = navigator;
     }
-  }
 
-  @Override public void showDetails() {
-    if(user != null) {
-      navigator.gotoUserDetails(user.id);
+    @DebugLog
+    @Override
+    public void bindView(MainContract.View view) {
+        this.view = view;
+
+        fetchUserInfo();
     }
-  }
 
-  @DebugLog
-  private void fetchUserInfo() {
-    view.showProgress();
+    @DebugLog
+    @Override
+    public void unbindView() {
+        if (subscription != null) {
+            subscription.cancel();
+        }
+    }
 
-    this.subscription = repository.getUser(new UserRepository.Listener<User>() {
-      @Override public void onReady(final User user) {
-        viewScheduler.execute(new Runnable() {
-          @Override public void run() {
-            Log.d(TAG, "get user, onReady, user: " + user);
-            MainPresenter.this.user = user;
-            view.hideProgress();
-            view.renderUserInfo(user);
-          }
+    @Override
+    public void showMore() {
+        navigator.gotoUsers();
+    }
+
+    @DebugLog
+    private void fetchUserInfo() {
+        view.showProgress();
+
+        this.subscription = repository.getUser(userId, new UserRepository.Listener<User>() {
+            @Override
+            public void onReady(final User user) {
+                viewScheduler.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "get user, onReady, user: " + user);
+                        view.hideProgress();
+                        view.renderUserInfo(user);
+                    }
+                });
+            }
         });
-      }
-    });
-  }
+    }
 }

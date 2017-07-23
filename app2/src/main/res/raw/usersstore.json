@@ -1,0 +1,380 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "rich",
+        "last": "roberts"
+      },
+      "location": {
+        "street": "5010 mill lane",
+        "city": "coventry",
+        "state": "cumbria",
+        "postcode": "M17 1JN"
+      },
+      "email": "rich.roberts@example.com",
+      "login": {
+        "username": "silverostrich907",
+        "password": "gretchen",
+        "salt": "fK58r56o",
+        "md5": "5a010c6493b95535017f2ca7482e4cc8",
+        "sha1": "b2d6e84af8b52b18338200fd37c09432678e86a0",
+        "sha256": "96d805ad87e74252eccb7af4c0dc7425ff0b7e7b281bb9e7f5fb5cb496f34f4a"
+      },
+      "dob": "1966-01-16 06:51:29",
+      "registered": "2010-05-03 07:04:26",
+      "phone": "017684 62361",
+      "cell": "0707-709-137",
+      "id": {
+        "name": "NINO",
+        "value": "XW 53 74 08 Y"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/31.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/31.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/31.jpg"
+      },
+      "nat": "GB"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "mrs",
+        "first": "sky",
+        "last": "gabriel"
+      },
+      "location": {
+        "street": "3092 monseigneur van de weteringstraat",
+        "city": "reusel-de mierden",
+        "state": "zeeland",
+        "postcode": 24526
+      },
+      "email": "sky.gabriel@example.com",
+      "login": {
+        "username": "bigostrich366",
+        "password": "happyday",
+        "salt": "iK8ldm4p",
+        "md5": "be51136e363b326c5b1948a51502effe",
+        "sha1": "957bb2dd00118dadb105e871be12fed163d743cd",
+        "sha256": "7476873fb6c0f37f2c3655bb9a8214bfb518ad270e4ca767beb29b1fb2d3e309"
+      },
+      "dob": "1966-01-28 18:44:06",
+      "registered": "2006-06-05 11:03:52",
+      "phone": "(961)-459-3103",
+      "cell": "(720)-671-2854",
+      "id": {
+        "name": "BSN",
+        "value": "14974540"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/67.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/67.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/67.jpg"
+      },
+      "nat": "NL"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "miss",
+        "first": "emma",
+        "last": "mortensen"
+      },
+      "location": {
+        "street": "8662 ribevej",
+        "city": "aarhus",
+        "state": "midtjylland",
+        "postcode": 53089
+      },
+      "email": "emma.mortensen@example.com",
+      "login": {
+        "username": "brownrabbit502",
+        "password": "magellan",
+        "salt": "gOXyptKJ",
+        "md5": "62cf18cf17e5b64c03d29c381f66d1f2",
+        "sha1": "9d944156190ffec81422a0e021d4618417fcbfad",
+        "sha256": "bc98ddac43a3b3ec15c3ca6d31d8d06e264e92c20fd1ca2ba0929b4d62b41bc8"
+      },
+      "dob": "1977-08-31 21:26:27",
+      "registered": "2012-08-20 00:59:49",
+      "phone": "99464384",
+      "cell": "16288228",
+      "id": {
+        "name": "CPR",
+        "value": "579057-1175"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/58.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/58.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/58.jpg"
+      },
+      "nat": "DK"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "hunter",
+        "last": "wright"
+      },
+      "location": {
+        "street": "1711 princess street",
+        "city": "timaru",
+        "state": "wellington",
+        "postcode": 52116
+      },
+      "email": "hunter.wright@example.com",
+      "login": {
+        "username": "crazytiger621",
+        "password": "travel",
+        "salt": "cI0OIhye",
+        "md5": "39da09b3bdebbab02bb14fbd143dfe54",
+        "sha1": "12a132c129a9399c0c84f613cccf7508003d4270",
+        "sha256": "d8069849fc5d12199184ceb66898e47c29d68083c8d23d3f2f6586eab1f673a7"
+      },
+      "dob": "1948-05-05 14:05:33",
+      "registered": "2002-11-10 21:33:57",
+      "phone": "(424)-524-3089",
+      "cell": "(730)-977-7663",
+      "id": {
+        "name": "",
+        "value": null
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/21.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/21.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/21.jpg"
+      },
+      "nat": "NZ"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "miss",
+        "first": "shelly",
+        "last": "gardner"
+      },
+      "location": {
+        "street": "8741 fairview st",
+        "city": "busselton",
+        "state": "northern territory",
+        "postcode": 2407
+      },
+      "email": "shelly.gardner@example.com",
+      "login": {
+        "username": "bluegorilla378",
+        "password": "0101",
+        "salt": "gd65QaEL",
+        "md5": "9f166874df919ecf805f05b1f5b5db61",
+        "sha1": "000dba48539c44183ffe835e3c86f4465a6fbaac",
+        "sha256": "d26c77d9d0087093a5bbb45e601eab17255a1e8b65a9f909a7a6bdc7c52123da"
+      },
+      "dob": "1982-07-17 11:07:37",
+      "registered": "2011-08-21 05:37:47",
+      "phone": "08-9709-0450",
+      "cell": "0421-084-058",
+      "id": {
+        "name": "TFN",
+        "value": "374803614"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/63.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/63.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/63.jpg"
+      },
+      "nat": "AU"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "ms",
+        "first": "maria",
+        "last": "jørgensen"
+      },
+      "location": {
+        "street": "7355 kirkevej",
+        "city": "århus c.",
+        "state": "sjælland",
+        "postcode": 64784
+      },
+      "email": "maria.jørgensen@example.com",
+      "login": {
+        "username": "purpledog743",
+        "password": "redd",
+        "salt": "cWNYvRig",
+        "md5": "7273bbb68599712cfee665ea5b14d557",
+        "sha1": "cbf51bfde3c6fe98e0eb2f1dbf97d51ece7da480",
+        "sha256": "07aa5a0fefca45ef0c5266472bee66c649e9b723c996cb641350c726abccced4"
+      },
+      "dob": "1953-01-17 12:14:59",
+      "registered": "2008-09-02 16:16:40",
+      "phone": "73350979",
+      "cell": "56244466",
+      "id": {
+        "name": "CPR",
+        "value": "545889-2413"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/38.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/38.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/38.jpg"
+      },
+      "nat": "DK"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "bill",
+        "last": "hall"
+      },
+      "location": {
+        "street": "1180 oak ridge ln",
+        "city": "santa clara",
+        "state": "idaho",
+        "postcode": 81144
+      },
+      "email": "bill.hall@example.com",
+      "login": {
+        "username": "crazyelephant686",
+        "password": "great1",
+        "salt": "xkqlQ59v",
+        "md5": "ae77c90514787f124f4cd3229bfd31f8",
+        "sha1": "bf5403c75d72e72f1f43bdf7b2e51dfc3944e066",
+        "sha256": "2de8caf92bbf9dc1586ca3deecfb77c0207317e34dc2b3f9ea9035c11bcbc9c0"
+      },
+      "dob": "1988-02-03 15:50:34",
+      "registered": "2002-08-17 05:44:06",
+      "phone": "(618)-349-3591",
+      "cell": "(370)-849-8536",
+      "id": {
+        "name": "SSN",
+        "value": "986-33-8022"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/41.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/41.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/41.jpg"
+      },
+      "nat": "US"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "mrs",
+        "first": "irene",
+        "last": "gallego"
+      },
+      "location": {
+        "street": "8659 calle de toledo",
+        "city": "pontevedra",
+        "state": "comunidad valenciana",
+        "postcode": 93870
+      },
+      "email": "irene.gallego@example.com",
+      "login": {
+        "username": "ticklishwolf110",
+        "password": "bizzare",
+        "salt": "BhioY0qF",
+        "md5": "703ce15e2242e8265524fa0fb1a4a2b0",
+        "sha1": "d74ba5361911276605dac101053ca3f734bfc276",
+        "sha256": "12fae187babd63c12140ec8876900482a9d0f7200927527ae86c11ec3434cc76"
+      },
+      "dob": "1978-04-09 13:32:35",
+      "registered": "2016-03-15 03:46:04",
+      "phone": "952-951-688",
+      "cell": "690-834-273",
+      "id": {
+        "name": "DNI",
+        "value": "98124710-X"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/70.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/70.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/70.jpg"
+      },
+      "nat": "ES"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "miss",
+        "first": "julia",
+        "last": "sippola"
+      },
+      "location": {
+        "street": "5035 tahmelantie",
+        "city": "ruovesi",
+        "state": "ostrobothnia",
+        "postcode": 36102
+      },
+      "email": "julia.sippola@example.com",
+      "login": {
+        "username": "silverpanda689",
+        "password": "models",
+        "salt": "Jbr9FgC5",
+        "md5": "5a743834eb5e49e3fc665cb7fdadc42c",
+        "sha1": "9f63ba96e1130813db0bfc0d454cceb4cbaf5ed8",
+        "sha256": "a6a6d46251cfa8aa551dd32732df367c3c5fcce21db4bf3767b0b395e095e033"
+      },
+      "dob": "1984-09-17 17:41:20",
+      "registered": "2005-02-07 08:38:24",
+      "phone": "08-392-522",
+      "cell": "042-868-44-65",
+      "id": {
+        "name": "HETU",
+        "value": "984-0706"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/70.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/70.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/70.jpg"
+      },
+      "nat": "FI"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "daniel",
+        "last": "ylitalo"
+      },
+      "location": {
+        "street": "3238 rotuaari",
+        "city": "jomala",
+        "state": "central finland",
+        "postcode": 96291
+      },
+      "email": "daniel.ylitalo@example.com",
+      "login": {
+        "username": "lazygorilla146",
+        "password": "blade",
+        "salt": "0xJse1zs",
+        "md5": "4e0de30c0d0ecd23209347cd46a74083",
+        "sha1": "5c7cce36a7d26721d05422facb135df2cb3360f7",
+        "sha256": "9b4bc95ab988101f7da46670b5b84636edeff483c6ae6d9b9a15e999110b93b1"
+      },
+      "dob": "1953-04-25 09:23:49",
+      "registered": "2015-12-29 02:07:43",
+      "phone": "03-736-637",
+      "cell": "045-980-79-95",
+      "id": {
+        "name": "HETU",
+        "value": "953-397R"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/45.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/45.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/45.jpg"
+      },
+      "nat": "FI"
+    }
+  ],
+  "info": {
+    "seed": "3d04f8f09a5ad152",
+    "results": 10,
+    "page": 1,
+    "version": "1.1"
+  }
+}

@@ -7,12 +7,13 @@ import dagger.android.AndroidInjector;
 @Subcomponent(modules = {MainModule.class})
 public interface MainComponent extends AndroidInjector<MainActivity> {
 
-  @Subcomponent.Builder
-  public abstract class Builder extends AndroidInjector.Builder<MainActivity> {
-    @Override public void seedInstance(MainActivity instance) {
-      mainModule(new MainModule(instance));
-    }
+    @Subcomponent.Builder
+    abstract class Builder extends AndroidInjector.Builder<MainActivity> {
+        @Override
+        public void seedInstance(MainActivity instance) {
+            mainModule(new MainModule(instance, "XW 53 74 08 Y"));
+        }
 
-    public abstract Builder mainModule(MainModule module);
-  }
+        public abstract Builder mainModule(MainModule module);
+    }
 }
