@@ -12,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.rosiapps.daggerdemo.R;
+import com.rosiapps.daggerdemo.presentation.details.map.MapFragment;
 import com.rosiapps.daggerdemo.presentation.details.users.UsersFragment;
 
 import javax.inject.Inject;
@@ -81,6 +83,8 @@ public class DetailsActivity extends AppCompatActivity implements ProgressViewIn
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position == 0) {
                 return UsersFragment.newInstance();
+            } else if (position == 1) {
+                return MapFragment.newInstance();
             } else {
                 throw new RuntimeException("invalid page position " + position);
             }
@@ -88,7 +92,7 @@ public class DetailsActivity extends AppCompatActivity implements ProgressViewIn
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
 
         @Override
@@ -96,6 +100,8 @@ public class DetailsActivity extends AppCompatActivity implements ProgressViewIn
             switch (position) {
                 case 0:
                     return "Users";
+                case 1:
+                    return "Map";
             }
             return null;
         }

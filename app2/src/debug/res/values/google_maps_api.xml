@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=C2:A5:C3:CB:BE:53:1B:44:DD:29:05:85:D5:62:5E:57:FD:A4:CB:82%3Bcom.rosiapps.daggerdemo.presentation.details.map
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    C2:A5:C3:CB:BE:53:1B:44:DD:29:05:85:D5:62:5E:57:FD:A4:CB:82
+
+    SHA-1 certificate fingerprint:
+    C2:A5:C3:CB:BE:53:1B:44:DD:29:05:85:D5:62:5E:57:FD:A4:CB:82
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAAR9x6zCH-mcIrbRiu1-ps9QUesz-G4Nw</string>
+</resources>
