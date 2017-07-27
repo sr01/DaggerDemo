@@ -11,7 +11,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 
-public class DaggerApplication extends Application implements HasComponent<AppComponent>, HasActivityInjector {
+public class DaggerApplication extends Application implements  HasActivityInjector {
 
   @Inject DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
   private AppComponent appComponent;
@@ -25,10 +25,6 @@ public class DaggerApplication extends Application implements HasComponent<AppCo
         .build();
 
     appComponent.inject(this);
-  }
-
-  @Override public AppComponent getComponent() {
-    return appComponent;
   }
 
   @Override public AndroidInjector<Activity> activityInjector() {

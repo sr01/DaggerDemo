@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(this);
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         userImageView = (ImageView) findViewById(R.id.iv_user);
         progressBarView = findViewById(R.id.progressBar);
         findViewById(R.id.btn_more).setOnClickListener(this);
-        AndroidInjection.inject(this);
     }
 
     @DebugLog

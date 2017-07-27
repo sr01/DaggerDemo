@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.hugo'
+apply plugin: "genymotion"
 
 android {
     compileSdkVersion 25
@@ -10,7 +11,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.rosiapps.daggerdemo.MockTestRunner"
         multiDexEnabled true
     }
     buildTypes {
@@ -25,6 +26,8 @@ android {
 }
 
 dependencies {
+    def MOCKITO_VERSION = '2.2.28'
+
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -43,13 +46,22 @@ dependencies {
 
     // Dagger core dependencies
     annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.11'
     compile 'com.google.dagger:dagger:2.11'
 
     // Dagger Android dependencies
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+
     //compile 'com.google.dagger:dagger-android:2.11'
     // Use this instead if you're using support library
     compile 'com.google.dagger:dagger-android-support:2.11'
 
+    testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
+    androidTestCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
+//    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
+    androidTestCompile 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
 
 }
+
