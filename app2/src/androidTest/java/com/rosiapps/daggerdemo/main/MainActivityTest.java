@@ -61,7 +61,7 @@ public class MainActivityTest
     public void user_details_should_be_displayed()
     {
         //TODO: S.R - this test should not test the presenter, it should test the UI and therefor should mock the presenter.
-        
+
         final CountingIdlingResource countingIdlingResource = new CountingIdlingResource("user_details_should_be_displayed");
         countingIdlingResource.increment();
         Espresso.registerIdlingResources(countingIdlingResource);
