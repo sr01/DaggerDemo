@@ -1,14 +1,11 @@
-package com.rosiapps.daggerdemo.main;
-
-import com.rosiapps.daggerdemo.presentation.main.MainActivity;
-import com.rosiapps.daggerdemo.presentation.main.MainScope;
+package com.rosiapps.daggerdemo.presentation.main;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
 
 @MainScope
 @Subcomponent(modules = {TestMainModule.class})
-public interface TestMainComponent extends AndroidInjector<MainActivity>
+public interface TestMainSubcomponent extends AndroidInjector<MainActivity>
 {
 
     @Subcomponent.Builder

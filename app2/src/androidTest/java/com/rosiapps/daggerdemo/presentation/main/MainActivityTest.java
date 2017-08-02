@@ -1,6 +1,6 @@
-package com.rosiapps.daggerdemo.main;
+package com.rosiapps.daggerdemo.presentation.main;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
@@ -9,11 +9,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.rosiapps.daggerdemo.R;
-import com.rosiapps.daggerdemo.TestAppComponent;
+import com.rosiapps.daggerdemo.TestApplication;
 import com.rosiapps.daggerdemo.data.User;
 import com.rosiapps.daggerdemo.data.UserRepository;
-import com.rosiapps.daggerdemo.presentation.main.MainActivity;
-import com.rosiapps.daggerdemo.utils.HasComponent;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -30,6 +28,9 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -38,29 +39,35 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest
-{
+public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<>(MainActivity.class, true, false);
-
     @Inject
     UserRepository mUserRepository;
+    private MainContract.Presenter mPresenter;
     private ScheduledExecutorService mExecutor = Executors.newSingleThreadScheduledExecutor();
 
     @Before
-    public void setUp() throws Exception
-    {
-        Context applicationContext = InstrumentationRegistry.getTargetContext().getApplicationContext();
-        HasComponent<TestAppComponent> hasComponent = (HasComponent<TestAppComponent>) applicationContext;
-        TestAppComponent component = hasComponent.getComponent();
-        component.inject(this);
+    public void setUp() throws Exception {
+        mPresenter = Mockito.mock(MainContract.Presenter.class);
+
+        TestApplication app = (TestApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
+        mUserRepository = app.userRepository;
+        final DispatchingAndroidInjector<Activity> dispatchingActivityInjector = app.getDispatchingActivityInjector();
+        app.setActivityAndroidInjector(new AndroidInjector<Activity>() {
+            @Override
+            public void inject(Activity instance) {
+                MainActivity activity = (MainActivity) instance;
+                dispatchingActivityInjector.inject(activity);
+                activity.presenter = mPresenter;
+            }
+        });
     }
 
     @Test
-    public void user_details_should_be_displayed()
-    {
-        //TODO: S.R - this test should not test the presenter, it should test the UI and therefor should mock the presenter.
+    public void user_details_should_be_displayed() {
+        //TODO: S.R - this test should not test the mPresenter, it should test the UI and therefor should mock the mPresenter.
 
         final CountingIdlingResource countingIdlingResource = new CountingIdlingResource("user_details_should_be_displayed");
         countingIdlingResource.increment();
@@ -69,16 +76,12 @@ public class MainActivityTest
         final User mockUser = new User("0", "mock first", "mock last", "mock@mock.com", "");
         final UserRepository.Subscription subscription = Mockito.mock(UserRepository.Subscription.class);
         final ArgumentCaptor<UserRepository.Listener<User>> listenerCap = ArgumentCaptor.forClass(UserRepository.Listener.class);
-        when(mUserRepository.getUser(anyString(), listenerCap.capture())).then(new Answer<UserRepository.Subscription>()
-        {
+        when(mUserRepository.getUser(anyString(), listenerCap.capture())).then(new Answer<UserRepository.Subscription>() {
             @Override
-            public UserRepository.Subscription answer(InvocationOnMock invocation) throws Throwable
-            {
-                mExecutor.schedule(new Runnable()
-                {
+            public UserRepository.Subscription answer(InvocationOnMock invocation) throws Throwable {
+                mExecutor.schedule(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         UserRepository.Listener<User> listener = listenerCap.getValue();
                         listener.onReady(mockUser);
                         countingIdlingResource.decrement();

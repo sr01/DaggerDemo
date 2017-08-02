@@ -1,4 +1,4 @@
-package com.rosiapps.daggerdemo.main;
+package com.rosiapps.daggerdemo.presentation.main;
 
 import com.rosiapps.daggerdemo.data.UserRepository;
 import com.rosiapps.daggerdemo.presentation.main.MainContract;
@@ -23,14 +23,14 @@ public class TestMainModule
 
     @MainScope
     @Provides
-    public MainContract.Presenter providePresenter(UserRepository repository, Scheduler viewScheduler, MainNavigator navigator)
+    public static MainContract.Presenter providePresenter(UserRepository repository, Scheduler viewScheduler, MainNavigator navigator)
     {
         return new MainPresenter("1", repository, viewScheduler, navigator);
     }
 
     @MainScope
     @Provides
-    public MainNavigator provideMainNavigator()
+    public static MainNavigator provideMainNavigator()
     {
         return Mockito.mock(MainNavigator.class);
     }
