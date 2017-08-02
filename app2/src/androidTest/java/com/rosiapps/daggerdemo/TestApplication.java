@@ -2,8 +2,8 @@ package com.rosiapps.daggerdemo;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.test.InstrumentationRegistry;
 
-import com.rosiapps.daggerdemo.data.UserRepository;
 import com.rosiapps.daggerdemo.utils.HasComponent;
 
 import javax.inject.Inject;
@@ -21,9 +21,11 @@ public class TestApplication extends Application implements HasActivityInjector,
     DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
     @Inject
     TestAppComponent component;
-    @Inject
-    public UserRepository userRepository;
     private AndroidInjector<Activity> activityAndroidInjector;
+
+    public static TestApplication getApplication() {
+        return (TestApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
+    }
 
     @Override
     public void onCreate() {
