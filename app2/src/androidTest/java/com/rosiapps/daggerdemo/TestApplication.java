@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.support.test.InstrumentationRegistry;
 
-import com.rosiapps.daggerdemo.utils.HasComponent;
-
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -16,40 +14,41 @@ import dagger.android.HasActivityInjector;
  * Created by shmulik on 27/07/2017.
  * .
  */
-public class TestApplication extends Application implements HasActivityInjector, HasComponent<TestAppComponent> {
+public class TestApplication extends Application implements HasActivityInjector, HasMockActivityInjector
+{
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
-    @Inject
-    TestAppComponent component;
-    private AndroidInjector<Activity> activityAndroidInjector;
+    private AndroidInjector<Activity> mockActivityInjector;
 
-    public static TestApplication getApplication() {
+    public static TestApplication getApplication()
+    {
         return (TestApplication) InstrumentationRegistry.getTargetContext().getApplicationContext();
     }
 
     @Override
-    public void onCreate() {
+    public void onCreate()
+    {
         super.onCreate();
 
         DaggerTestAppComponent.builder().build().inject(this);
-        activityAndroidInjector = dispatchingActivityInjector;
+        mockActivityInjector = dispatchingActivityInjector;
     }
 
     @Override
-    public AndroidInjector<Activity> activityInjector() {
-        return activityAndroidInjector;
+    public AndroidInjector<Activity> activityInjector()
+    {
+        return mockActivityInjector;
     }
 
-    public DispatchingAndroidInjector<Activity> getDispatchingActivityInjector() {
+    @Override
+    public AndroidInjector<Activity> getRealActivityInjector()
+    {
         return dispatchingActivityInjector;
     }
 
-    public void setActivityAndroidInjector(AndroidInjector<Activity> activityAndroidInjector) {
-        this.activityAndroidInjector = activityAndroidInjector;
-    }
-
     @Override
-    public TestAppComponent getComponent() {
-        return component;
+    public void setMockActivityInjector(AndroidInjector<Activity> activityInjector)
+    {
+        mockActivityInjector = activityInjector;
     }
 }

@@ -1,6 +1,5 @@
 package com.rosiapps.daggerdemo.presentation.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.test.rule.ActivityTestRule;
@@ -15,12 +14,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-
-import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -29,7 +24,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.mockito.Mockito.doAnswer;
 
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class MainActivityTest
+{
     @Rule
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<>(MainActivity.class, true, false);
@@ -37,22 +33,24 @@ public class MainActivityTest {
     private MainActivityInjector injector;
 
     @Before
-    public void setUp() throws Exception {
-        TestApplication app = TestApplication.getApplication();
-        injector = new MainActivityInjector(app);
-        app.setActivityAndroidInjector(injector);
+    public void setUp() throws Exception
+    {
+        injector = new MainActivityInjector(TestApplication.getApplication());
     }
 
     @Test
-    public void user_details_should_be_displayed() {
+    public void user_details_should_be_displayed()
+    {
         final CountingIdlingResource countingIdlingResource = new CountingIdlingResource("user_details_should_be_displayed");
         countingIdlingResource.increment();
         final User mockUser = new User("0", "mock first", "mock last", "mock@mock.com", "");
         final ArgumentCaptor<MainContract.View> viewArgumentCaptor = ArgumentCaptor.forClass(MainContract.View.class);
 
-        doAnswer(new Answer() {
+        doAnswer(new Answer()
+        {
             @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
+            public Object answer(InvocationOnMock invocation) throws Throwable
+            {
                 MainContract.View view = viewArgumentCaptor.getValue();
                 view.renderUserInfo(mockUser);
                 return null;
@@ -64,33 +62,5 @@ public class MainActivityTest {
         onView(withId(R.id.txt_firstname)).check(matches(withText(mockUser.firstName)));
         onView(withId(R.id.txt_lastname)).check(matches(withText(mockUser.lastName)));
         onView(withId(R.id.txt_email)).check(matches(withText(mockUser.email)));
-    }
-
-    class MainActivityInjector implements AndroidInjector<Activity> {
-        MainContract.Presenter presenter;
-        private DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
-
-        MainActivityInjector(TestApplication app) {
-            dispatchingActivityInjector = app.getDispatchingActivityInjector();
-            presenter = Mockito.mock(MainContract.Presenter.class);
-        }
-
-        @Override
-        public void inject(Activity instance) {
-            MainActivity activity = (MainActivity) instance;
-            //inject activity by the default injector (we provide via component, module, etc.)
-            injectDefaults(activity);
-
-            //inject this test mocks dependencies
-            injectTestMocks(activity);
-        }
-
-        private void injectTestMocks(MainActivity activity) {
-            activity.presenter = presenter;
-        }
-
-        private void injectDefaults(MainActivity activity) {
-            dispatchingActivityInjector.inject(activity);
-        }
     }
 }
