@@ -14,6 +14,7 @@ import com.rosiapps.daggerdemo.R;
 import com.rosiapps.daggerdemo.presentation.details.ProgressViewInteractor;
 import com.rosiapps.daggerdemo.presentation.details.users.user.UserPresenter;
 import com.rosiapps.daggerdemo.presentation.details.users.user.UserViewHolder;
+import com.rosiapps.daggerdemo.utils.Injector;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class UsersFragment extends Fragment implements UsersContract.View {
     @Inject
     ProgressViewInteractor progressViewInteractor;
     @Inject
-    UsersComponent component;
+    Injector<UserViewHolder> userViewHolderInjector;
     private UsersAdapter adapter;
 
     public UsersFragment() {
@@ -56,7 +57,7 @@ public class UsersFragment extends Fragment implements UsersContract.View {
         adapter = new UsersAdapter() {
             @Override
             protected void injectDependencies(UserViewHolder viewHolder) {
-                component.inject(viewHolder);
+                userViewHolderInjector.doInject(viewHolder);
             }
         };
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler);

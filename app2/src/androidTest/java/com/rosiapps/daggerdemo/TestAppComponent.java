@@ -1,5 +1,6 @@
 package com.rosiapps.daggerdemo;
 
+import com.rosiapps.daggerdemo.presentation.details.TestDetailsBindingModule;
 import com.rosiapps.daggerdemo.presentation.main.TestMainBindingModule;
 
 import javax.inject.Singleton;
@@ -16,7 +17,8 @@ import dagger.android.AndroidInjectionModule;
 @Component(modules = {
         AndroidInjectionModule.class,
         TestMainBindingModule.class,
+        TestDetailsBindingModule.class,
         TestAppModule.class})
-public interface TestAppComponent {
+interface TestAppComponent {
     void inject(TestApplication application);
 }

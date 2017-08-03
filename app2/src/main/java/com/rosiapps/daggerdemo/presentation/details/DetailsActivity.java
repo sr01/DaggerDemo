@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.google.android.gms.maps.SupportMapFragment;
 import com.rosiapps.daggerdemo.R;
 import com.rosiapps.daggerdemo.presentation.details.map.MapFragment;
 import com.rosiapps.daggerdemo.presentation.details.users.UsersFragment;
