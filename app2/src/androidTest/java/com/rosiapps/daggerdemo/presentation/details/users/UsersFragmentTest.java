@@ -57,6 +57,19 @@ public class UsersFragmentTest {
 
     @Test
     public void users_should_be_displayed() {
+        UsersContract.Presenter presenter = Injection.TestUsersModule.providePresenter();
+        final ArgumentCaptor<UsersContract.View> viewArgumentCaptor = ArgumentCaptor.forClass(UsersContract.View.class);
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                UsersContract.View view = viewArgumentCaptor.getValue();
+                List<UserPresenter> list = new ArrayList<>();
+                list.add(new UserPresenter(new User("1", "Yossi", "Choen", "yosi@test.com", "")));
+                list.add(new UserPresenter(new User("1", "Rafi", "Israel", "rafi@test.com", "")));
+                view.renderUsers(list);
+                return null;
+            }
+        }).when(presenter).bindView(viewArgumentCaptor.capture());
 
         activityRule.launchActivity(new Intent());
 
@@ -85,29 +98,15 @@ public class UsersFragmentTest {
         @Module
         class TestUsersModule {
 
+            private static UsersContract.Presenter presenter = Mockito.mock(UsersContract.Presenter.class);
+
             @Provides
-            Injector<UserViewHolder> userViewHolderInjector(TestUsersComponent component) {
+            static Injector<UserViewHolder> userViewHolderInjector(TestUsersComponent component) {
                 return component;
             }
 
             @Provides
-            UsersContract.Presenter providePresenter() {
-                UsersContract.Presenter presenter = Mockito.mock(UsersContract.Presenter.class);
-                final ArgumentCaptor<UsersContract.View> viewArgumentCaptor = ArgumentCaptor.forClass(UsersContract.View.class);
-
-                doAnswer(new Answer() {
-                    @Override
-                    public Object answer(InvocationOnMock invocation) throws Throwable {
-                        UsersContract.View view = viewArgumentCaptor.getValue();
-
-                        List<UserPresenter> list = new ArrayList<>();
-                        list.add(new UserPresenter(new User("1", "Yossi", "Choen", "yosi@test.com", "")));
-                        list.add(new UserPresenter(new User("1", "Rafi", "Israel", "rafi@test.com", "")));
-                        view.renderUsers(list);
-                        return null;
-                    }
-                }).when(presenter).bindView(viewArgumentCaptor.capture());
-
+            static UsersContract.Presenter providePresenter() {
                 return presenter;
             }
         }
@@ -119,7 +118,6 @@ public class UsersFragmentTest {
             @IntoMap
             @dagger.android.support.FragmentKey(UsersFragment.class)
             abstract AndroidInjector.Factory<? extends Fragment> bindUserDetailsFragmentInjectorFactory(TestUsersComponent.Builder builder);
-
         }
     }
 }
