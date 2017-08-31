@@ -64,12 +64,3 @@ dependencies {
     androidTestCompile 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
 
 }
-
-genymotion {
-    devices {
-        nexus5 {
-            template "Google Nexus 5 - 5.1.0 - API 22 - 1080x1920"
-            deleteWhenFinish false
-        }
-    }
-}
