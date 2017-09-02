@@ -19,10 +19,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import javax.inject.Inject;
+
 public class SimpleUserRepository implements UserRepository {
     private ScheduledExecutorService executor;
     private UsersStore usersStore;
 
+    @Inject
     public SimpleUserRepository(Context context) {
         try {
             usersStore = UsersStore.create(context);

@@ -1,5 +1,6 @@
 package com.rosiapps.daggerdemo;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.rosiapps.daggerdemo.data.SimpleUserRepository;
@@ -11,33 +12,29 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Singleton;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
 @Module(subcomponents = {MainComponent.class})
-public class AppModule {
-
-    private Context context;
-
-    public AppModule(Context context) {
-        this.context = context;
-    }
+public abstract class AppModule {
 
     @Singleton
     @Provides
-    public UserRepository provideUserRepository() {
-        return new SimpleUserRepository(context);
-    }
-
-    @Singleton
-    @Provides
-    public Picasso providePicasso() {
+    static Picasso providePicasso(Context context) {
         return new Picasso.Builder(context).build();
     }
 
     @Singleton
     @Provides
-    public Scheduler provideViewScheduler() {
+    static Scheduler provideViewScheduler() {
         return Schedulers.androidMainScheduler();
     }
+
+    @Binds
+    public abstract Context context(Application application);
+
+    @Singleton
+    @Binds
+    abstract UserRepository provideUserRepository(SimpleUserRepository repository);
 }
